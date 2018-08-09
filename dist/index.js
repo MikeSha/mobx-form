@@ -2026,9 +2026,9 @@ function Form(_ref) {
             form.setModel(nextProps.model);
           }
 
-          if (nextProps.values !== form.values) {
-            form.init(nextProps.values);
-          }
+          // if (nextProps.values !== form.values) {
+          //   form.init(nextProps.values);
+          // }
 
           return { form: form };
         }

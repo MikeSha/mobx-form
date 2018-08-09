@@ -37,9 +37,9 @@ function Form({ fields, options = {} }) {
           form.setModel(nextProps.model);
         }
 
-        if (nextProps.values !== form.values) {
-          form.init(nextProps.values);
-        }
+        // if (nextProps.values !== form.values) {
+        //   form.init(nextProps.values);
+        // }
 
         return { form };
       }
