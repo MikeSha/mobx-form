@@ -109,7 +109,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17;
+var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18;
 
 var _validatorjs = __webpack_require__(8);
 
@@ -194,13 +194,15 @@ var FieldState = (_class = function () {
 
     _initDefineProp(this, 'pristine', _descriptor7, this);
 
-    _initDefineProp(this, 'readOnly', _descriptor8, this);
+    _initDefineProp(this, 'isBlurred', _descriptor8, this);
 
-    _initDefineProp(this, 'initialValue', _descriptor9, this);
+    _initDefineProp(this, 'readOnly', _descriptor9, this);
 
-    _initDefineProp(this, 'value', _descriptor10, this);
+    _initDefineProp(this, 'initialValue', _descriptor10, this);
 
-    _initDefineProp(this, 'validateDebounceDurationMs', _descriptor11, this);
+    _initDefineProp(this, 'value', _descriptor11, this);
+
+    _initDefineProp(this, 'validateDebounceDurationMs', _descriptor12, this);
 
     this.form = undefined;
     this.initialConfig = undefined;
@@ -209,17 +211,17 @@ var FieldState = (_class = function () {
     this.transform = undefined;
     this.debouncedFormValidate = undefined;
 
-    _initDefineProp(this, 'enable', _descriptor12, this);
+    _initDefineProp(this, 'enable', _descriptor13, this);
 
-    _initDefineProp(this, 'disable', _descriptor13, this);
+    _initDefineProp(this, 'disable', _descriptor14, this);
 
-    _initDefineProp(this, 'setPristine', _descriptor14, this);
+    _initDefineProp(this, 'setPristine', _descriptor15, this);
 
-    _initDefineProp(this, 'setLabel', _descriptor15, this);
+    _initDefineProp(this, 'setLabel', _descriptor16, this);
 
-    _initDefineProp(this, 'setRules', _descriptor16, this);
+    _initDefineProp(this, 'setRules', _descriptor17, this);
 
-    _initDefineProp(this, 'setFieldStates', _descriptor17, this);
+    _initDefineProp(this, 'setFieldStates', _descriptor18, this);
 
     this.key = ++ID_COUNTER;
     this.form = form;
@@ -297,6 +299,15 @@ var FieldState = (_class = function () {
       }
 
       this.value = value;
+      this.form.invalidate(null);
+      if (this.isBlurred) {
+        this.validateWithDebounce({ removePristineState: true });
+      }
+    }
+  }, {
+    key: 'onBlur',
+    value: function onBlur(e) {
+      this.isBlurred = true;
       this.form.invalidate(null);
       this.validateWithDebounce({ removePristineState: true });
     }
@@ -413,25 +424,30 @@ var FieldState = (_class = function () {
   initializer: function initializer() {
     return true;
   }
-}), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, 'readOnly', [_mobx.observable], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, 'isBlurred', [_mobx.observable], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor9 = _applyDecoratedDescriptor(_class.prototype, 'initialValue', [_mobx.observable], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class.prototype, 'readOnly', [_mobx.observable], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor10 = _applyDecoratedDescriptor(_class.prototype, 'initialValue', [_mobx.observable], {
   enumerable: true,
   initializer: function initializer() {
     return undefined;
   }
-}), _descriptor10 = _applyDecoratedDescriptor(_class.prototype, 'value', [_mobx.observable], {
+}), _descriptor11 = _applyDecoratedDescriptor(_class.prototype, 'value', [_mobx.observable], {
   enumerable: true,
   initializer: null
-}), _descriptor11 = _applyDecoratedDescriptor(_class.prototype, 'validateDebounceDurationMs', [_mobx.observable], {
+}), _descriptor12 = _applyDecoratedDescriptor(_class.prototype, 'validateDebounceDurationMs', [_mobx.observable], {
   enumerable: true,
   initializer: function initializer() {
     return 250;
   }
-}), _applyDecoratedDescriptor(_class.prototype, 'init', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'init'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'reset', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'reset'), _class.prototype), _descriptor12 = _applyDecoratedDescriptor(_class.prototype, 'enable', [_mobx.action], {
+}), _applyDecoratedDescriptor(_class.prototype, 'init', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'init'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'reset', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'reset'), _class.prototype), _descriptor13 = _applyDecoratedDescriptor(_class.prototype, 'enable', [_mobx.action], {
   enumerable: true,
   initializer: function initializer() {
     var _this2 = this;
@@ -440,7 +456,7 @@ var FieldState = (_class = function () {
       _this2.disabled = false;
     };
   }
-}), _descriptor13 = _applyDecoratedDescriptor(_class.prototype, 'disable', [_mobx.action], {
+}), _descriptor14 = _applyDecoratedDescriptor(_class.prototype, 'disable', [_mobx.action], {
   enumerable: true,
   initializer: function initializer() {
     var _this3 = this;
@@ -449,7 +465,7 @@ var FieldState = (_class = function () {
       _this3.disabled = true;
     };
   }
-}), _descriptor14 = _applyDecoratedDescriptor(_class.prototype, 'setPristine', [_mobx.action], {
+}), _descriptor15 = _applyDecoratedDescriptor(_class.prototype, 'setPristine', [_mobx.action], {
   enumerable: true,
   initializer: function initializer() {
     var _this4 = this;
@@ -458,7 +474,7 @@ var FieldState = (_class = function () {
       _this4.pristine = value;
     };
   }
-}), _descriptor15 = _applyDecoratedDescriptor(_class.prototype, 'setLabel', [_mobx.action], {
+}), _descriptor16 = _applyDecoratedDescriptor(_class.prototype, 'setLabel', [_mobx.action], {
   enumerable: true,
   initializer: function initializer() {
     var _this5 = this;
@@ -467,7 +483,7 @@ var FieldState = (_class = function () {
       _this5.label = label;
     };
   }
-}), _descriptor16 = _applyDecoratedDescriptor(_class.prototype, 'setRules', [_mobx.action], {
+}), _descriptor17 = _applyDecoratedDescriptor(_class.prototype, 'setRules', [_mobx.action], {
   enumerable: true,
   initializer: function initializer() {
     var _this6 = this;
@@ -485,7 +501,7 @@ var FieldState = (_class = function () {
       }
     };
   }
-}), _descriptor17 = _applyDecoratedDescriptor(_class.prototype, 'setFieldStates', [_mobx.action], {
+}), _descriptor18 = _applyDecoratedDescriptor(_class.prototype, 'setFieldStates', [_mobx.action], {
   enumerable: true,
   initializer: function initializer() {
     var _this7 = this;
@@ -495,7 +511,7 @@ var FieldState = (_class = function () {
       _this7.form.validate();
     };
   }
-}), _applyDecoratedDescriptor(_class.prototype, 'setValue', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'setValue'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onChange', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'onChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'dirty', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'dirty'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'hasError', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'hasError'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'valid', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'valid'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'validate', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'validate'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setServerErrors', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'setServerErrors'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'remove', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'remove'), _class.prototype)), _class);
+}), _applyDecoratedDescriptor(_class.prototype, 'setValue', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'setValue'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onChange', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'onChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onBlur', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'onBlur'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'dirty', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'dirty'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'hasError', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'hasError'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'valid', [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, 'valid'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'validate', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'validate'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setServerErrors', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'setServerErrors'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'remove', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'remove'), _class.prototype)), _class);
 exports.default = FieldState;
 
 /***/ }),

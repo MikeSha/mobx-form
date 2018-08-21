@@ -14,6 +14,7 @@ class FieldState {
   @observable name;
   @observable placeholder;
   @observable pristine = true;
+  @observable isBlurred = false;
   @observable readOnly = false;
   @observable initialValue = undefined;
   @observable value;
@@ -134,6 +135,16 @@ class FieldState {
     }
 
     this.value = value;
+    this.form.invalidate(null);
+    /* INFO: Validate only if the field was blurred */
+    if (this.isBlurred) {
+      this.validateWithDebounce({ removePristineState: true });
+    }
+  }
+
+  @action
+  onBlur(e) {
+    this.isBlurred = true;
     this.form.invalidate(null);
     this.validateWithDebounce({ removePristineState: true });
   }
