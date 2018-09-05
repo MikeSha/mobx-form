@@ -687,7 +687,7 @@ var ArrayFieldState = (_class = function (_FieldState) {
         this.form.validate();
       }
 
-      // this.form.setSubmitted(false);
+      this.form.setSubmitted(false);
 
       return fieldState;
     }
@@ -1042,7 +1042,7 @@ var FlatArrayFieldState = (_class = function (_ArrayFieldState) {
         this.form.validate();
       }
 
-      // this.form.setSubmitted(false);
+      this.form.setSubmitted(false);
     }
   }, {
     key: 'remove',
