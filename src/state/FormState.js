@@ -89,10 +89,15 @@ class FormState {
 
   @action
   reset() {
-    this.submitted = false;
+    this.setSubmitted(false);
     this.fieldStates.forEach(field => field.reset());
 
     this.validate();
+  }
+
+  @action
+  setSubmitted(data) {
+    this.submitted = data;
   }
 
   @action
@@ -263,7 +268,7 @@ class FormState {
   @action
   submit(onSubmit) {
     this.error = null;
-    this.submitted = true;
+    this.setSubmitted(true);
 
     const submitFn = onSubmit || this.onSubmit;
     submitFn(this, this.getValues());

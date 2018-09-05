@@ -12,6 +12,8 @@ class FlatArrayFieldState extends ArrayFieldState {
     if (validate) {
       this.form.validate();
     }
+
+    this.form.setSubmitted(false);
   }
 
   @action

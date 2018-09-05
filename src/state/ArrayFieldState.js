@@ -41,6 +41,8 @@ class ArrayFieldState extends FieldState {
       this.form.validate();
     }
 
+    this.form.setSubmitted(false);
+
     return fieldState;
   }
 
