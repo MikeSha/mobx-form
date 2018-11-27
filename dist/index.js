@@ -1,14 +1,5 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("mobx"), require("react"), require("validatorjs"));
-	else if(typeof define === 'function' && define.amd)
-		define(["mobx", "react", "validatorjs"], factory);
-	else if(typeof exports === 'object')
-		exports["mobx-form"] = factory(require("mobx"), require("react"), require("validatorjs"));
-	else
-		root["mobx-form"] = factory(root["mobx"], root["react"], root["validatorjs"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__4__, __WEBPACK_EXTERNAL_MODULE__8__) {
-return /******/ (function(modules) { // webpackBootstrap
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -519,7 +510,7 @@ exports.default = FieldState;
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
+module.exports = require("mobx");
 
 /***/ }),
 /* 2 */
@@ -947,7 +938,7 @@ exports.default = ArrayFieldState;
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__4__;
+module.exports = require("react");
 
 /***/ }),
 /* 5 */
@@ -1197,7 +1188,7 @@ function get(object, field) {
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__8__;
+module.exports = require("validatorjs");
 
 /***/ }),
 /* 9 */
@@ -2161,5 +2152,4 @@ exports.FormContext = _FormContext2.default;
 
 /***/ })
 /******/ ]);
-});
 //# sourceMappingURL=index.js.map

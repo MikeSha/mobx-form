@@ -4,7 +4,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     library: 'mobx-form',
-    libraryTarget: 'umd'
+    libraryTarget: 'commonjs2'
   },
   devtool: 'source-map',
   module: {
