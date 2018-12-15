@@ -710,7 +710,7 @@ var ArrayFieldState = (_class = function (_FieldState) {
         if (field) {
           fieldState[field.name] = field;
 
-          if (!onInit && fieldValue !== undefined) {
+          if (!onInit && fieldValue !== undefined && fieldValue !== null) {
             field.setValue(fieldValue);
           }
         }
