@@ -9,6 +9,7 @@ class FormState {
   @observable error;
   @observable errors = [];
   @observable submitted = false;
+  @observable isSubmitting = false;
 
   onSubmit = () => console.warn('No onSubmit() provided');
   onChange = () => {};
@@ -93,6 +94,11 @@ class FormState {
     this.fieldStates.forEach(field => field.reset());
 
     this.validate();
+  }
+
+  @action
+  setIsSubmitting(data = true) {
+    this.isSubmitting = data;
   }
 
   @action
