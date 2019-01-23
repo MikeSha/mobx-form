@@ -18,7 +18,7 @@ class FieldState {
   @observable readOnly = false;
   @observable initialValue = undefined;
   @observable value;
-  @observable validateDebounceDurationMs = 250;
+  @observable validateDebounceDurationMs = 0;
 
   key;
   form = undefined;

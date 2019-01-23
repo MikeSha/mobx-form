@@ -437,7 +437,7 @@ var FieldState = (_class = function () {
 }), _descriptor12 = _applyDecoratedDescriptor(_class.prototype, 'validateDebounceDurationMs', [_mobx.observable], {
   enumerable: true,
   initializer: function initializer() {
-    return 250;
+    return 0;
   }
 }), _applyDecoratedDescriptor(_class.prototype, 'init', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'init'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'reset', [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, 'reset'), _class.prototype), _descriptor13 = _applyDecoratedDescriptor(_class.prototype, 'enable', [_mobx.action], {
   enumerable: true,
