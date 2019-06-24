@@ -1490,8 +1490,6 @@ var FormState = (_class = function () {
       });
       if (configIdx >= 0) {
         this.fieldConfigs.splice(configIdx, 1);
-      } else {
-        console.warn('Field config not found for field ' + name);
       }
 
       var stateIdx = this.fieldStates.findIndex(function (field) {
@@ -1499,8 +1497,6 @@ var FormState = (_class = function () {
       });
       if (stateIdx >= 0) {
         this.fieldStates.splice(stateIdx, 1);
-      } else {
-        console.warn('Field config not found for field ' + name);
       }
       this.validate();
     }
@@ -1562,10 +1558,6 @@ var FormState = (_class = function () {
       var field = this.fieldStates.find(function (f) {
         return f.name === fieldName;
       });
-
-      if (!field) {
-        console.warn('Field "' + fieldName + '" not found.');
-      }
 
       return field;
     }
