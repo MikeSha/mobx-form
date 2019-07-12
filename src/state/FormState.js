@@ -340,7 +340,11 @@ class FormState {
   }
 
   setValue(fieldName, value, options) {
-    this.getField(fieldName).setValue(value, options);
+    const field = this.getField(fieldName);
+
+    if (field) {
+      field.setValue(value, options);
+    }
   }
 
   @action

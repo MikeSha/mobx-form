@@ -1638,7 +1638,11 @@ var FormState = (_class = function () {
   }, {
     key: 'setValue',
     value: function setValue(fieldName, value, options) {
-      this.getField(fieldName).setValue(value, options);
+      var field = this.getField(fieldName);
+
+      if (field) {
+        field.setValue(value, options);
+      }
     }
   }, {
     key: 'setValues',
